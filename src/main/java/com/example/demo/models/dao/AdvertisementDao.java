@@ -20,12 +20,12 @@ public class AdvertisementDao {
 		Connection con = jdbcTemplate.getDataSource().getConnection();
 		
 		ResultSet rs = con.createStatement().executeQuery("SELECT * FROM Advertisements");
-		List<AdvertisementDto> Advertisements = new LinkedList<AdvertisementDto>();
+		List<AdvertisementDto> аdvertisements = new LinkedList<AdvertisementDto>();
 		
 		while (rs.next()) {
-			Advertisements.add(new AdvertisementDto(rs.getLong(1), rs.getString("modification")));
+			аdvertisements.add(new AdvertisementDto(rs.getLong(1), rs.getString("modification")));
 		}
 		
-		return Advertisements;
+		return аdvertisements;
 	}
 }

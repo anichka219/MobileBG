@@ -12,16 +12,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-	@Entity
-	@Table (name="advertisements")
+
 	@Getter
 	@Setter
 	@AllArgsConstructor
 	@EqualsAndHashCode
 	public class AdvertisementDto {
 		
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 		private Long id;
 		private String modification;
 		
