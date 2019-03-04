@@ -11,12 +11,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table (name="regions")
+@Table (name="main_categories")
 @Getter
 @Setter
 @AllArgsConstructor
-public class Region {
-
+public class MainCategory {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

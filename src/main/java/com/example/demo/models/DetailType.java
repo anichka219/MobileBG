@@ -11,14 +11,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table (name="regions")
+@Table (name="details_types")
 @Getter
 @Setter
 @AllArgsConstructor
-public class Region {
-
+public class DetailType {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	
 }
