@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
@@ -24,7 +25,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @EqualsAndHashCode
+@NoArgsConstructor
 public class User {
+	
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -44,4 +49,15 @@ public class User {
 	private Set<Advertisement> myAdvertisement= new HashSet<Advertisement>();
 	@ManyToMany(mappedBy="favourites")
 	private Set<Advertisement> myFavourites= new HashSet<Advertisement>();
+	
+	
+    private String password2;
+	public boolean isAdministrator() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	public void setAdministrator(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
 }
