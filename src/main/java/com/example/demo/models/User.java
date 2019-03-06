@@ -24,6 +24,7 @@ import org.springframework.data.annotation.Transient;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -33,8 +34,15 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @EqualsAndHashCode
+<<<<<<< HEAD
 @ToString
+=======
+@NoArgsConstructor
+>>>>>>> 6b81749543366aa59826d73d396c0a005962dc99
 public class User {
+	
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -62,7 +70,18 @@ public class User {
 	@ManyToMany(mappedBy="favourites",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	private Set<Advertisement> myFavourites= new HashSet<Advertisement>();
 	
+<<<<<<< HEAD
 	public User() {
+=======
+	
+    private String password2;
+	public boolean isAdministrator() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	public void setAdministrator(boolean b) {
+		// TODO Auto-generated method stub
+>>>>>>> 6b81749543366aa59826d73d396c0a005962dc99
 		
 	}
 }
