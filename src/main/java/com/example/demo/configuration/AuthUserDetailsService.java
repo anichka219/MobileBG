@@ -34,11 +34,13 @@ public class AuthUserDetailsService implements UserDetailsService {
         boolean accountNonExpired = true;
         boolean credentialsNonExpired = true;
         boolean accountNonLocked = true;
-
+        
+      
         User user = getUserDetail(email);
         if (user != null) {
+        
             springUser = new org.springframework.security.core.userdetails.User(user.getEmail(),
-                    user.getPassword(),
+                    user.getCryptPassword(),//TODO check correct
                     enabled,
                     accountNonExpired,
                     credentialsNonExpired,
@@ -78,7 +80,7 @@ public class AuthUserDetailsService implements UserDetailsService {
         if (user == null) {
             logger.warn("user '" + email + "' on null!");
         } else {
-            logger.info(user.toString());
+            logger.info(user.toString() + " - finded");
         }
         return user;
     }

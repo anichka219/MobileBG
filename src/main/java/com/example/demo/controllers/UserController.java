@@ -91,6 +91,7 @@ public class UserController {
         }
         
         reqUser.setCryptPassword(PassEncoding.getInstance().passwordEncoder.encode(reqUser.getPassword()));
+        logger.info(reqUser.getCryptPassword());
         reqUser.setRole(UserRoles.ROLE_USER.getValue());
 
         if (userService.save(reqUser) != null) {
