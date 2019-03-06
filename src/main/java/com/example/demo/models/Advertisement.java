@@ -1,6 +1,7 @@
 package com.example.demo.models;
 
 
+import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.HashSet;
 import java.util.Set;
@@ -91,9 +92,9 @@ public class Advertisement {
 	private Brand brand;
 	@ManyToOne
 	private MainCategory mainCategory;
-	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	private User user;
-	@ManyToMany(cascade = {
+	@ManyToMany(fetch = FetchType.EAGER, cascade = {
 	        CascadeType.PERSIST,
 	        CascadeType.MERGE
 	    })
@@ -102,7 +103,7 @@ public class Advertisement {
 	        inverseJoinColumns = @JoinColumn(name = "advertisement_id")
 	    )
 	private Set<User> favourites= new HashSet<User>();
-	@ManyToMany(cascade = {
+	@ManyToMany(fetch = FetchType.EAGER,cascade = {
 	        CascadeType.PERSIST,
 	        CascadeType.MERGE
 	    })
@@ -111,7 +112,13 @@ public class Advertisement {
 	        inverseJoinColumns = @JoinColumn(name = "advertisement_id")
 	    )
 	private Set<Detail> details= new HashSet<Detail>();
-	@OneToMany(mappedBy="advertisement")
+	@OneToMany(mappedBy="advertisement",fetch = FetchType.EAGER)
 	private Set<File> files=new HashSet<File>();
-	
+	private String status;
+	private String description;
+	@Column(name = "create_date")
+	private LocalDateTime createDate;
+	public Advertisement() {
+		
+	}
 }
