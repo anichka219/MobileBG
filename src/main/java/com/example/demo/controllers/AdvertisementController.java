@@ -17,7 +17,7 @@ public class AdvertisementController {
 
 	@GetMapping("/advertisements")
 	public List<AdvertisementDto> getAllCourses() {
-	   	System.out.println("here222!!!!!!!");
+		
 		return advertisementService.getAllAdvertisements();
 	}
 
