@@ -129,7 +129,7 @@ public class AdvController {
         try {
             Advertisement adv = advService.findById(editAdv.getId());
             if (!adv.equals(editAdv)) {
-            	logger.info("VLIZAAAAA");
+            	
                 advService.update(editAdv);           	
                 model.addAttribute("msg", "success");
             } else {
@@ -169,7 +169,7 @@ public class AdvController {
                 redirectAttributes.addFlashAttribute("msgText", "Advertisement " + adv.getId() + " Restored Successfully.");
             } else {
                 redirectAttributes.addFlashAttribute("msg", "active_fail");
-                redirectAttributes.addFlashAttribute("msgText", "Advertisement Activation failed !!! Advertisement:" + adv.getId());
+                redirectAttributes.addFlashAttribute("msgText", "Advertisement Activation failed !!!");
 
             }
         } else if (operation.equals("delete")) {

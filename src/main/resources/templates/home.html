@@ -57,10 +57,10 @@
                             <table class="table table-bordered  table-striped table-responsive">
                                 <thead>
                                 <tr class="btn-info">
-                                    <th>Основна категория</th>
-                                    <th>Описание</th>
+                                    <th>Марка</th>
+                                    <th>Модел</th>
+                                    <th>Цена</th>
                                     <th>Дата на публикуване</th>
-                                    <th>Модификация</th>
                                     <th>Операция</th>
                                 </tr>
                                 </thead>
@@ -69,10 +69,10 @@
                                     <td colspan="5" align="center">Все още нямате добавени обяви!</td>
                                 </tr>
                                 <tr th:each="adv : ${allAdv}">
-                                 	<td	th:text="${adv?.mainCategory?.getName()}"></td>
-                                    <td th:text="${adv.description}"></td>
+                                 	<td	th:text="${adv?.brand?.getName()}"></td>
+                                    <td th:text="${adv?.model?.getName()}"></td>
+                                    <td th:text="${adv.price}"></td>
                                     <td th:text="${adv.createDate}"></td>
-                                    <td th:text="${adv.description}"></td>
                                     <td th:hidden="${adv.id}"></td>
                                     <td align="center">
                                         <a th:href="@{/adv/edit/{id}(id=${adv.id})}">
@@ -82,7 +82,7 @@
                                         <a data-toggle="modal" data-target="#modal-toTrash"
                                            th:attr="data-target='#modal-toTrash'+${adv.id}">
                                             <span class="glyphicon glyphicon-trash" data-toggle="tooltip"
-                                                  data-placement="top" title="Sent to Trash Box"></span></a>
+                                                  data-placement="top" title="Изпращане в кошчето"></span></a>
                                     </td>
                                     <!--start send to trash modal-->
                                     <div class="modal modal-toTrash" th:id="modal-toTrash+${adv.id}">
@@ -90,7 +90,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal"
-                                                            aria-hidden="true">Г—
+                                                            aria-hidden="true">
                                                     </button>
                                                     <h3 id="myModalLabel">Потвърждение за изтриване</h3>
                                                 </div>
@@ -139,11 +139,11 @@
                             <table class="table table-bordered table-striped table-responsive">
                                 <thead>
                                 <tr class="btn-info">
-                                    <th>Advertisement</th>
-                                    <th>Description</th>
-                                    <th>Date</th>
-                                    <th>Details</th>
-                                    <th>Operation</th>
+                                    <th>Марка</th>
+                                    <th>Модел</th>
+                                    <th>Цена</th>
+                                    <th>Дата на публикуване</th>
+                                    <th>Операция</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -151,10 +151,10 @@
                                     <td colspan="5" align="center">Все още няма обяви!!!</td>
                                 </tr>
                                 <tr th:each="adv : ${allPassiveAdv}">
-                               		<td th:text="${adv.description}"></td>
-                                    <td th:text="${adv.description}"></td>
+                               		<td th:text="${adv?.brand?.getName()}"></td>
+                                    <td th:text="${adv?.model?.getName()}"></td>
+                                    <td th:text="${adv.price}"></td>
                                     <td th:text="${adv.createDate}"></td>
-                                    <td th:text="${adv.description}"></td>
                                     <td th:hidden="${adv.id}"></td>
                                     <td align="center">
                                         <a th:href="@{/adv/restore/{id}(id=${adv.id})}">
