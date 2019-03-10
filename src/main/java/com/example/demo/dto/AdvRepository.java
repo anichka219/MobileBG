@@ -11,9 +11,8 @@ import com.example.demo.models.Advertisement;
 import java.util.List;
 
 @Repository
-public interface AdvRepository extends JpaRepository<Advertisement, Long> {
+public interface AdvRepository extends CrudRepository<Advertisement, Long> {
 
-    //@Query("from Task t where t.status=:status")
     List<Advertisement> findByStatus(String status);
 
     List<Advertisement> findByUserIdAndStatus(long userId,  String status);

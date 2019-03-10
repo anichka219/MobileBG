@@ -35,6 +35,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table (name="advertisements")
@@ -47,30 +48,27 @@ public class Advertisement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String modification;
-	@Enumerated(EnumType.STRING)
+	private String modification;	
 	@Column(columnDefinition = "enum('Бензинов', 'Дизелов', 'Електрически', 'Хибриден')",name="engine_type")
-	private EngineType engineType;
-	@Enumerated(EnumType.STRING)
+	private String engineType;
 	@Column(columnDefinition = "enum('Нов', 'Употребяван', 'За части')",name="state")
-	private State state;
+	private String state;
 	private int power;
-	@Enumerated(EnumType.STRING)
 	@Column (columnDefinition= "enum('Евро 1', 'Евро 2', 'Евро 3', 'Евро 4', 'Евро 5', 'Евро 6')")
-	private EuroStandart eurostandart;
-	@Enumerated(EnumType.STRING)
-	@Column (columnDefinition= "enum('Ръчна', 'Авроматична', 'Полуавтоматична')")
-	private Transmission transmission;
+	private String eurostandart;
+	
+	@Column (columnDefinition= "enum('Ръчна', 'Автоматична', 'Полуавтоматична')")
+	private String transmission;
 	private int price;
-	@Enumerated(EnumType.STRING)
+
 	@Column (columnDefinition= "enum('EUR', 'USD', 'BGN')")
-	private Currency currency;
+	private String currency;
 	@Column (name="production_date")
 	private YearMonth productionDate;
 	private int mileage;
-	@Enumerated(EnumType.STRING)
+
 	@Column (columnDefinition= "enum('28 дни', '35 дни', '42 дни', '49 дни', '56 дни')")
-	private Validity validity;
+	private String validity;
 	@Column (name="axes_count")
 	private int axesCount;
 	@Column (name="seat_count")
@@ -87,9 +85,15 @@ public class Advertisement {
 	@ManyToOne
 	private Location location;
 	@ManyToOne
+	private Region region;
+	@ManyToOne
+	private ModelAdv model;
+	@ManyToOne
 	private Color color;
 	@ManyToOne
 	private Brand brand;
+	@ManyToOne
+	private Category category;
 	@ManyToOne
 	private MainCategory mainCategory;
 	@ManyToOne(optional = false, fetch = FetchType.EAGER)
@@ -117,7 +121,7 @@ public class Advertisement {
 	private String status;
 	private String description;
 	@Column(name = "create_date")
-	private LocalDateTime createDate;
+	private LocalDateTime createDate;	
 	public Advertisement() {
 		
 	}

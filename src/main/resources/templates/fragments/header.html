@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="/webjars/font-awesome/5.0.10/web-fonts-with-css/css/fontawesome-all.min.css"/>
         <link th:href="@{/css/task.css}" rel="stylesheet" media="screen"/>
         <script th:src="@{/static/js/task.js}"></script>
+        <script th:src="@{/static/js/jquery.chained.remote.js}"></script>
         <link rel="stylesheet" type="text/css" th:href="@{/static/css/site.css}"/>
         <!--<link rel="shortcut icon" href="/static/icons/favicon.ico">-->
         <!--datetime picker-->
@@ -51,23 +52,30 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="pull-left active" role="tab" data-target="#addTaskTab" data-toggle="tab">
-                        <a class="btn icon-btn " href="#">
-                            <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
-                            Add task
+                    <li class="pull-left active">
+                        <a class="btn icon-btn " th:href="@{/home}">
+                        <span class="glyphicon btn-glyphicon glyphicon-home img-circle"></span>
+                          Начало 
                         </a>
+                    </li>
+                    <li class="pull-left active">
+                        <a class="btn icon-btn " th:href="@{/create}">                  
+                            <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+                            Публикуване 
+                        </a>
+                       
                     </li>
                     <li class="pull-left " role="tab" data-target="#trashTab" data-toggle="tab">
                         <a class="btn icon-btn " href="#">
                             <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
-                            Delete
+                            Изтрити
                         </a>
                     </li>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a>
-                        <h6 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]!</h6>
+                        <h6 th:inline="text">Добре дошъл, [[${#httpServletRequest.remoteUser}]]!</h6>
                     </a>
                     </li>
                     <li>

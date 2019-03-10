@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -29,10 +30,13 @@ public class Location {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	@Enumerated(EnumType.STRING)
-	@Column(columnDefinition = "enum('гр.','с.')")
-	private LocationType type;
-	@ManyToOne
-	private Region region;
 
+	@Column(columnDefinition = "enum('гр.','с.')")
+	private String type;
+	@ManyToOne
+	@JoinColumn(name="region_id", insertable = false, updatable = false)
+	private Region region;
+	@Column(name="region_id")
+	private Long regionId;
+	public Location() {}
 }

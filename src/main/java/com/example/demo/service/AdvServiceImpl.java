@@ -1,8 +1,11 @@
 package com.example.demo.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.controllers.AdvController;
 import com.example.demo.dto.AdvRepository;
 import com.example.demo.models.Advertisement;
 
@@ -12,6 +15,7 @@ import java.util.List;
 @Service
 public class AdvServiceImpl implements AdvService {
 
+    private static final Logger logger = LoggerFactory.getLogger(AdvServiceImpl.class);
     @Autowired
     private AdvRepository advRepository;
 
@@ -22,8 +26,10 @@ public class AdvServiceImpl implements AdvService {
 
     @Override
     public Boolean delete(long id) {
+
         if (advRepository.existsById(id)) {
         	advRepository.deleteById(id);
+        	
             return true;
         }
         return false;

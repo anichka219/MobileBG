@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login</title>
-    <meta name="description" content="spring-boot thymeleaf | Login ">
+    <meta charset="UTF-8" name="description" content="spring-boot thymeleaf | Login ">
     <div th:replace="fragments/header :: header-login-css"></div>
 </head>
 <body>
@@ -13,8 +13,8 @@
     <div class="container">
         <div class="login-register-form-section">
             <ul class="nav nav-tabs" role="tablist">
-                <li class="active col-xs-6"><a href="#login" data-toggle="tab">Login</a></li>
-                <li class="col-xs-6"><a th:href="@{/register}">Register</a></li>
+                <li class="active col-xs-6"><a href="#login" data-toggle="tab">Вход</a></li>
+                <li class="col-xs-6"><a th:href="@{/register}">Регистрация</a></li>
             </ul>
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade in active" id="login">
@@ -23,14 +23,14 @@
                         <button type="button" class="close" data-dismiss="alert"
                                 aria-hidden="true">&times;
                         </button>
-                        Invalid email or password.
+                        Невалиден и-мейл или парола.
                     </div>
                     <form th:action="@{/login}" method="post" class="form-horizontal">
                         <div class="form-group ">
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
                                 <input type="text" name="username" class="form-control"
-                                       placeholder="Username" required="required" value=""/>
+                                       placeholder="Email" required="required" value=""/>
                             </div>
                          </div>   
                         <div class="form-group ">
@@ -42,10 +42,9 @@
                         </div>
                         <div class="form-group">
                             <input type="checkbox" id="rememberMe"/>
-                            <label for="rememberMe">Remember Me </label>
-                            <a href="#" class="pull-right">Forgot password?</a>
+                            <label for="rememberMe">Запомни ме </label>
                         </div>
-                        <input type="submit" value="Login" class="btn btn-success btn-custom"/>
+                        <input type="submit" value="Вход" class="btn btn-success btn-custom"/>
                     </form>
                 </div>
             </div>
@@ -56,7 +55,7 @@
 <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 <footer>
-    <div th:replace="fragments/footer :: footer">&copy; 2016 pironix</div>
+    <div th:replace="fragments/footer :: footer">&copy; 2019 </div>
 </footer>
 
 </body>

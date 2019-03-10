@@ -29,16 +29,7 @@ public class UserController {
     GlobalController globalController;
 
     @Autowired
-    UserService userService;
-    
-    @Autowired
-    AdvService advService;
-    
-    @Autowired
-    RegionServiceImpl regionService;
-    
-    @Autowired
-    MainCategoryServiceImpl mainCategoryService;
+    UserService userService;   
     
     @RequestMapping("/")
     public String root(Model model) {
@@ -52,18 +43,6 @@ public class UserController {
         model.addAttribute("reqUser", new User());
         logger.info("login");
         return "login";
-    }
-    
-    @RequestMapping("/home")
-    public String home(Model model) {
-    	Advertisement ad =new Advertisement();
-        model.addAttribute("reqAdv", ad);
-        model.addAttribute("allReg",regionService.getAllRegions());
-        model.addAttribute("allMainCategory", mainCategoryService.getAllMainCategories());
-        model.addAttribute("allAdv", advService.findByUserIdStatus(globalController.getLoginUser().getId(), Status.ACTIVE.getValue()));
-        model.addAttribute("allPassiveTask", advService.findByUserIdStatus(globalController.getLoginUser().getId(), Status.PASSIVE.getValue()));
-        logger.info("home");
-        return "home";
     }
 
     @RequestMapping("/admin")
@@ -102,7 +81,6 @@ public class UserController {
 
         return "redirect:/register";
     }
-
 
 }
 

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>Edit</title>
-     <meta charset="UTF-8" name="description" content="spring-boot thymeleaf | edit ">
-    <div th:replace="fragments/header :: header-css"/>
-    	<style type="text/css">
+    <title>Home</title>
+    <meta charset="UTF-8" name="description" content="spring-boot thymeleaf | create ">
+    <div th:replace="fragments/header :: header-css"></div>
+	<style type="text/css">
 		.column {
 		  float: left;
 		  width:40%;
@@ -24,46 +25,53 @@
 		
 		
 	</style>
+	
 </head>
 <body>
-<div th:replace="fragments/header :: header"/>
+	<div th:replace="fragments/header :: header"></div>
 
-<div class="tab-content">
-    <div class="tab-pane active" id="compose">
-        <div class="container">
-            <div class="content-container clearfix">
-
-                <div class="row">
-                    <h1 class="content-title">Редактиране на обява</h1>
-
-                    <div th:if="${msg eq 'success'}" class="alert alert-success alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert"
-                                aria-hidden="true">&times;
-                        </button>
-                        <strong>Успешно редактирана </strong> обява
-                    </div>
-                    <div th:if="${msg eq 'same'}" class="alert alert-warning alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert"
-                                aria-hidden="true">&times;
-                        </button>
-                        <strong>Внимание !!! </strong> Моля променете поне едно поле
-                    </div>
-                    <div th:if="${msg eq 'fail'}" class="alert alert-danger alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert"
-                                aria-hidden="true">&times;
-                        </button>
-                        <strong>Error !!!  </strong> Неочаквана грешка. Моля опитайте отново по-късно.
-                    </div>
-
-                    <form th:object="${editAdv}" th:action="@{/adv/editAdv}" method="post">
-                        <input type="hidden" th:field="*{id}" th:value="*{id}"/>
-                        <input type="hidden" th:field="*{user}" th:value="*{user.getId()}"/>
-                        <input type="hidden" th:field="*{status}" th:value="*{status}"/>
-                        <input type="hidden" th:field="*{createDate}" th:value="*{createDate}"/>
-                        
-                        <div class="col-md-12">                            
-                            <div class="form-group">
-                                <div class="form-group">
+	<div class="tab-content">
+		<div class="tab-pane active" id="addAdvTab">
+			<div class="container">
+				<div class="content-container clearfix">
+					<div class="row">
+						<h1 class="content-title">Публикуване на обява</h1>
+						<!--star operations messages-->
+						<div th:if="${msg eq 'success'}" class="alert alert-success alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+								&times;
+							</button>
+								Обявата е публикувана 
+								<strong> Успешно!</strong>
+						</div>
+						<div th:if="${msg eq 'fail'}" class="alert alert-danger alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+								&times;
+							</button>
+							<strong>Възникна грешка. Моля опитайте отново!</strong>
+						</div>
+						<div th:if="${msg eq 'active'}" class="alert alert-success alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+								&times;
+							</button>
+							<strong><h6 th:text="${msgText}"/></strong>
+						</div>
+						<div th:if="${msg eq 'active_fail'}" class="alert alert-danger alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+								&times;
+							</button>
+							<strong>Грешка !!!</strong> <h6 th:text="${msgText}"/>
+						</div>
+						<div th:if="${msg eq 'trash'}" class="alert alert-success alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+								&times;
+							</button>
+							Обявата е изпратена в кошчето
+						</div>
+						<!--end of messages-->
+						<form th:object="${reqAdv}" th:action="@{/adv/saveAdv}" method="post">
+							<div class="col-md-12">                                                  
+								<div class="form-group">
 									<table style="margin:0 auto;" width="1200" cellspacing="0" cellpadding="0" border="0">
 										<tr>
 											<td><b>Основна категория</b></td>
@@ -100,15 +108,13 @@
 															th:text="${brand.name}"> 
 													</option>   						 	
 												</select>											
-												<select  th:field="*{model.id}" id="modelId"  class="column">
-													<option value=""
-														th:text="*{model.name}"></option> 
+												<select  th:field="*{model.id}" id="modelId" class="column">
+													<option value=""></option> 
 												</select>
 											</td>
-
 											<td>  
-											  <input th:field="*{modification}" type="text"/>
-											  <select th:field="*{engineType}">
+												<input th:field="*{modification}" type="text" />
+												<select th:field="*{engineType}">
 													<option th:value="Бензинов" th:text="Бензинов"></option>
 													<option th:value="Дизелов" th:text="Дизелов"></option>
 													<option th:value="Електрически" th:text="Електрически"></option>
@@ -158,7 +164,7 @@
 												<select  id="categoryId">
 													<option value=""></option> 
 												</select>
-											</td>
+											</td>   
 											<td>
 												<select th:field="*{validity}">
 													<option value="28 дни">28 дни</option>
@@ -223,82 +229,58 @@
 
                             <div class="float-right btn-send">                            
                                 <button class="btn btn-success btn-md"><span class="glyphicon glyphicon-send"></span>
-                                    Промяна
+                                    Create
                                 </button>
                             </div>
-                            <br/>
-                            <div>
-                                <a th:href="@{/home}" class="fa fa-arrow-left pull-right"> Назад</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+								
+								
 
-                <span class="help-block"></span>
 
-            </div>
-        </div>
+							</div>
+							<div class="float-right btn-send">                            
 
-    </div>
-
-</div>
-<footer>
-    <div class="separator" th:replace="fragments/footer :: footer">&copy; 2019 </div>
-</footer>
-
-<script>
-function getModels() {
-	console.log("----------------------");
-	
-	var e = document.getElementById("brandId");
-	var strBrand = e.options[e.selectedIndex].text;
-
-	var selectedModel = document.getElementById("modelId").innerText;
-	console.log("value sleected is : " + selectedModel);
-	console.log("val: " + strBrand);
-	
-	console.log("val: " + e.options[e.selectedIndex].value);             
-	
-	
-	
-	$.getJSON('/loadModels', {
-	        brandId : strBrand,
-	        ajax : 'true'
-	    }, function(data) {                 
-	        var html = '<option value=""></option>';
-	        var len = data.length;
+							</div>
+						</form>
+					</div>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="separator" th:replace="fragments/footer :: footer">&copy; 2019 </div>
+	</footer>
+	<script>
+		window.onload = function(){
+		   $("#modelId").width(150);		
+			getCategory();
+		};			
+					
+		function getModels() {		
+			var e = document.getElementById("brandId");
+			var strBrand = e.options[e.selectedIndex].text;
+			console.log("val: " + strBrand);		
+			console.log("val: " + e.options[e.selectedIndex].value);      
 			
-	        for ( var i = 0; i < len; i++) {
-	            html += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
-	        }
-
-	        html += '</option>';  
-	        
-
+			$.getJSON('loadModels', {
+					brandId : strBrand,
+					ajax : 'true'
+				}, function(data) {                 
+					var html = '<option value=""></option>';
+					var len = data.length;
+					
+					for ( var i = 0; i < len; i++) {
+						html += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+					}
+					html += '</option>';  			
 	    	console.log("begin................." );
 	    	console.log(html);
 
 	    	console.log("end................." );
-	    	
-
-            $('#modelId').html(html);
 	
-
-	    });
-	
-	console.log("Broq na elementirte e : " + $('modelId').childElementCount);
-			for(var i =0; i < $('modelId').childElementCount; i++)
-			{
-				if($('modelId').options[i].value == selectedModel)
-					{
-					console.log("bam selected index :" + i + " sas value :" + $('modelId').options[i].value);
-						$('modelId').selectedIndex = i;
-						break;
-					}
-			}
-	console.log("_____________________________________________");
-	};
-           
+					$('#modelId').html(html);
+				});
+			};
 window.onload = function()
 {
    $("#modelId").width(150);
@@ -307,47 +289,28 @@ window.onload = function()
 	getLocations();
 	
 };
-
-function getCategory() {
-	console.log("----------------------");
-	
-	var e = document.getElementById("mainCategoryId");
-	var strMainCat = e.options[e.selectedIndex].text;
-
-	console.log("val: " + strMainCat);
-	
-	console.log("val: " + e.options[e.selectedIndex].value);             
-	
-	
-	
-	$.getJSON('/loadCategories', {
-	        mainCategoryId : strMainCat,
-	        ajax : 'true'
-	    }, function(data) {                 
-	        var html = '<option value=""></option>';
-	        var len = data.length;
+		
+		function getCategory() {		
+			var e = document.getElementById("mainCategoryId");
+			var strMainCat = e.options[e.selectedIndex].text;
+			console.log("val: " + strMainCat);		
+			console.log("val: " + e.options[e.selectedIndex].value);     
 			
-	        for ( var i = 0; i < len; i++) {
-	            html += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
-	        }
-
-	        html += '</option>';  
-	        
-
-	    	console.log("begin................." );
-	    	console.log(html);
-
-	    	console.log("end................." );
-	    	
-
-            $('#categoryId').html(html);
-	
-
-	    });
-	};
-           
-            
-        
+			$.getJSON('loadCategories', {
+					mainCategoryId : strMainCat,
+					ajax : 'true'
+				}, function(data) {                 
+					var html = '<option value=""></option>';
+					var len = data.length;
+					
+					for ( var i = 0; i < len; i++) {
+						html += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+					}
+					html += '</option>';  
+					console.log(html);
+					$('#categoryId').html(html);
+				});
+			};
 function getLocations() {
 	console.log("----------------------");
 	
@@ -360,7 +323,7 @@ function getLocations() {
 	
 	
 	
-	$.getJSON('/loadLocations', {
+	$.getJSON('loadLocations', {
 	        regionId : strRegion,
 	        ajax : 'true'
 	    }, function(data) {                 
@@ -385,16 +348,50 @@ function getLocations() {
 
 	    });
 	};
-           
-             
-    $(function () {
-        $('#startDatePicker').datetimepicker({
-            defaultDate: 'now',
-            viewMode: 'days',
-            format: 'DD/MM/YYYY'
-        });
-    });
-</script>
+				
+		$(function () {
+			$('#startDatePicker').datetimepicker({
+				defaultDate: 'now',
+				viewMode: 'days',
+				format: 'DD/MM/YYYY'
+			});
+		});
 
+		$('#modal-toTrash').on('show.bs.modal', function (e) {
+			$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+			$('#modal-toTrashHiddenId').val($(this).find('.btn-ok').attr('href'));
+		});
+
+		$('#modal-delete').on('show.bs.modal', function (e) {
+			$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+			$('#modal-deleteHiddenId').val($(this).find('.btn-ok').attr('href'));
+		});
+		
+	</script>
+
+<!-- 
+<script>
+    var power = document.getElementById("power");
+
+    console.log(power.value)
+    function validate() {
+        if (!power.value.isNumber()) {
+            power.setCustomValidity("Only numbers");
+        } else {
+            power.setCustomValidity('');
+        }
+    }
+    power.onchange = validate;
+    power.onkeyup = validate;
+</script>
+ -->
 </body>
 </html>
+
+
+
+
+
+
+
+

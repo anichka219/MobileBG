@@ -37,10 +37,12 @@ public class AuthUserDetailsService implements UserDetailsService {
         
       
         User user = getUserDetail(email);
+
+        logger.info("<<<<<<<<<<<<<<<<<<<<");
         if (user != null) {
         
             springUser = new org.springframework.security.core.userdetails.User(user.getEmail(),
-                    user.getCryptPassword(),//TODO check correct
+                    user.getCryptPassword(),
                     enabled,
                     accountNonExpired,
                     credentialsNonExpired,

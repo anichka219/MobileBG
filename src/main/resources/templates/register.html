@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Register</title>
-    <meta name="description" content="spring-boot thymeleaf | Register ">
+    <meta charset="UTF-8" name="description" content="spring-boot thymeleaf | Register ">
     <div th:replace="fragments/header :: header-login-css"></div>
 </head>
 <body>
@@ -12,8 +12,8 @@
     <div class="container">
         <div class="login-register-form-section">
             <ul class="nav nav-tabs" role="tablist">
-                <li class="col-xs-6"><a th:href="@{/login}">Login</a></li>
-                <li class="col-xs-6"><a class="active" href="#register" data-toggle="tab">Register</a></li>
+                <li class="col-xs-6"><a th:href="@{/login}">Вход</a></li>
+                <li class="col-xs-6"><a class="active" href="#register" data-toggle="tab">Регистрация</a></li>
 
             </ul>
             <div class="tab-content">
@@ -22,23 +22,17 @@
                     <div th:if="${saveUser eq 'success'}" class="alert alert-success alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert"
                                 aria-hidden="true">&times;</button>
-                        <strong>User registered Successfully</strong> Please Login
-                    </div>
-
-                    <div th:if="${saveUser eq 'exist-name'}" class="alert alert-danger alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert"
-                                aria-hidden="true">&times;</button>
-                        <strong>Error!</strong> User name already used !!!
+                        <strong>Вие се регистрирахте успешно!</strong>
                     </div>
                     <div th:if="${saveUser eq 'exist-email'}" class="alert alert-danger alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert"
                                 aria-hidden="true">&times;</button>
-                        <strong>Error!</strong> User email already used !!!
+                        <strong>Error!</strong> Съществува потребител с този имейл !!!
                     </div>
                     <div th:if="${saveUser eq 'fail'}" class="alert alert-danger alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert"
                                 aria-hidden="true">&times;</button>
-                        <strong>Error!</strong> Unexpected error !!!
+                        <strong>Грешка!</strong> Възникна грешка !!! Моля опитайте отново
                     </div>
 
                     <form id="registerForm" th:object="${reqUser}" th:action="@{/register}" method="post"
@@ -68,7 +62,7 @@
                                        placeholder="Confirm Password" required="required"/>
                             </div>
                         </div>
-                        <input type="submit" value="Register" class="btn btn-success btn-custom"/>
+                        <input type="submit" value="Регистрация" class="btn btn-success btn-custom"/>
                     </form>
                 </div>
             </div>
@@ -78,7 +72,7 @@
 <div id="footerSeparator"></div>
 
 <footer>
-    <div th:replace="fragments/footer :: footer">&copy; 2016 ibrahim Karayel</div>
+    <div th:replace="fragments/footer :: footer">&copy; 2019</div>
 </footer>
 <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
@@ -88,7 +82,7 @@
 
     function validatePassword() {
         if (password.value != confirm_password.value) {
-            confirm_password.setCustomValidity("Passwords Don't Match");
+            confirm_password.setCustomValidity("Паролите не съвпадат!");
         } else {
             confirm_password.setCustomValidity('');
         }
