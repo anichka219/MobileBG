@@ -34,7 +34,6 @@ import com.example.demo.models.enums.Validity;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
@@ -43,7 +42,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @EqualsAndHashCode
-@NoArgsConstructor
 public class Advertisement {
 	
 	@Id
@@ -120,5 +118,7 @@ public class Advertisement {
 	private String description;
 	@Column(name = "create_date")
 	private LocalDateTime createDate;
-	
+	public Advertisement() {
+		
+	}
 }
