@@ -17,8 +17,8 @@ public interface AdvRepository extends CrudRepository<Advertisement, Long> {
 
     List<Advertisement> findByUserIdAndStatus(long userId,  String status);
     
-    @Query("from Advertisement a where a.id BETWEEN  :start and :end")
-    List<Advertisement> findBetween(@Param("start") int start, @Param("end") int end);
+//    @Query("from Advertisement a where a.id BETWEEN  :start and :end")
+//    List<Advertisement> findBetween(@Param("start") int start, @Param("end") int end);
 
 
 }

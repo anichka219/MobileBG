@@ -60,10 +60,10 @@ public class AdvServiceImpl implements AdvService {
         return  advRepository.findByUserIdAndStatus(userId, status);
     }
     
-    @Transactional
-	@Override
-	public List<Advertisement> findBetween(int start, int end) {
-		 return advRepository.findBetween(start, end);
-	}
-	
+//    @Transactional
+//	@Override
+//	public List<Advertisement> findBetween(int start, int end) {
+//		 return advRepository.findBetween(start, end);
+//	}
+//	
 }

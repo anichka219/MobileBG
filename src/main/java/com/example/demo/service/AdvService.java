@@ -20,7 +20,7 @@ public interface AdvService {
 
     List<Advertisement> findByUserIdStatus(long userId, String status);
 
-    List<Advertisement> findBetween(int start, int end);
+//    List<Advertisement> findBetween(int start, int end);
 
 }
 

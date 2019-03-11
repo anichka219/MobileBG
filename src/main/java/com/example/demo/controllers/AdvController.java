@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -103,7 +104,7 @@ public class AdvController {
         logger.info("create");
         return "create";
     }
- 
+    
     @RequestMapping(value = {"/adv/saveAdv"}, method = RequestMethod.POST)
     public String saveAdv(@ModelAttribute("reqAdv") Advertisement reqAdv,
                            final RedirectAttributes redirectAttributes) {
@@ -142,7 +143,7 @@ public class AdvController {
         model.addAttribute("editAdv", editAdv);
         return "edit";
     }
-
+    
 
     @RequestMapping(value = "/adv/{operation}/{id}", method = RequestMethod.GET)
     public String advOperation(@PathVariable("operation") String operation,
